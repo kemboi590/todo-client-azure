@@ -1,1 +1,1 @@
-export const ApiDomain = "http://localhost:3000"
+export const ApiDomain = "https://todo-api-demo-f0fdeacghfaegrg0.canadacentral-01.azurewebsites.net"
