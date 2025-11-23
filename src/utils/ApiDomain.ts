@@ -1,1 +1,1 @@
-export const ApiDomain = "https://todo-api-demo-f0fdeacghfaegrg0.canadacentral-01.azurewebsites.net"
+export const ApiDomain = "https://todo-api-h0byf6btcffrffhe.southafricanorth-01.azurewebsites.net"
