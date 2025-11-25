@@ -1,9 +1,31 @@
-describe("Fundamentals", () => {
+
+describe('UI Navigation', () => {
     beforeEach(() => {
-        cy.visit('/')
+        cy.viewport(1280, 720);
     })
 
-    it('Containts Correct header text', () => {
-        cy.get('h1').contains("Welcome to TodoPro!")
+
+    it("Should visit multimple pages", () => {
+        cy.visit('/')
+
+        cy.location("pathname").should("equal", "/")
+
+        cy.getDataTest('todo-welcome-header').contains("Welcome to TodoPro!")
+
+        cy.visit('/about')
+        cy.location("pathname").should("equal", "/about")
+
+        cy.getDataTest('todo-about-header').contains("About TodoPro")
+
+        cy.visit('/register')
+
+        cy.getDataTest('todo-registration-header').contains("Account Registration")
+
+        cy.visit('/login')
+
+        cy.getDataTest('todo-login-header').contains("Login")
+
+
     })
-})
+});
+

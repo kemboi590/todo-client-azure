@@ -37,7 +37,8 @@ export const CreateTodo = () => {
         try {
             const response = await createTodo(data).unwrap()
             console.log(response.message);
-            toast.success(response.message)
+            toast.success(response.message);
+                (document.getElementById('create-todo') as HTMLDialogElement)?.close()
         } catch (error) {
             console.error("Error creating todo:", error);
             toast.error("Failed to create todo. Please try again.");
@@ -50,6 +51,7 @@ export const CreateTodo = () => {
             <div className="modal-box bg-gray-600 text-white w-full max-w-xs sm:max-w-lg mx-auto rounded-lg">
                 <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-4" >
                     <input
+                        data-test="todo-name-input"
                         type="text"
                         {...register("todo_name")}
                         placeholder="Todo Name"
@@ -61,6 +63,7 @@ export const CreateTodo = () => {
                     )}
 
                     <textarea
+                        data-test="todo-description-input"
                         {...register("description")}
                         placeholder="Description"
                         className="textarea textarea-bordered w-full p-2 focus:ring-2 focus:ring-blue-500 text-lg bg-white text-gray-800"
@@ -70,6 +73,7 @@ export const CreateTodo = () => {
                     )}
 
                     <input
+                        data-test="todo-userid-input"
                         type="number"
                         {...register("user_id")}
                         placeholder="User ID"
@@ -81,6 +85,7 @@ export const CreateTodo = () => {
                     )}
 
                     <input
+                        data-test="todo-date-input"
                         type="date"
                         {...register("due_date")}
                         className="input rounded w-full p-2 focus:ring-2 focus:ring-blue-500 text-lg bg-white text-gray-800"
@@ -94,13 +99,14 @@ export const CreateTodo = () => {
                             <span className="label-text mr-4 text-white ">Status</span>
                             <div>
                                 <label >
-                                    <input type="radio" value="true"
+
+                                    <input data-test="todo-status-completed" type="radio" value="true"
                                         {...register("isCompleted")}
                                         className="radio radio-success"
                                     /> Completed
                                 </label>
                                 <label >
-                                    <input type="radio" value="false"
+                                    <input data-test="todo-status-pending" type="radio" value="false"
                                         {...register("isCompleted")}
                                         className="radio radio-warning" defaultChecked /> Pending
                                 </label>
@@ -111,7 +117,7 @@ export const CreateTodo = () => {
 
                     <div className="modal-action">
 
-                        <button
+                        <button data-test="createtodo-submit-button"
                             type="submit" className="btn btn-primary"
                             disabled={isLoading}
                         >

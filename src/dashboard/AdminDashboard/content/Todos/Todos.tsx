@@ -17,7 +17,7 @@ export default function Todos() {
         <div>
             {/* create todo button */}
             <div className="flex justify-center mb-3 mt-3">
-                <button
+                <button data-test="create-todo-button"
                     className="btn bg-gray-600 text-white hover:bg-gray-700 border border-gray-400 rounded-lg px-4 py-2 text-lg"
                     onClick={() => (document.getElementById('create-todo') as HTMLDialogElement).showModal()}
                 >
@@ -71,7 +71,7 @@ export default function Todos() {
                                         >
                                             <FaEdit size={20} />
                                         </button>
-                                        <button className="btn btn-sm btn-danger text-red-500"
+                                        <button className="btn btn-sm btn-danger text-red-500" data-test="delete-todo-button"
                                             onClick={() => {
                                                 setTodoToDelete(todo);
                                                 (document.getElementById('delete_modal') as HTMLDialogElement)?.showModal();

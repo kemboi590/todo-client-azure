@@ -47,11 +47,11 @@ export const Register = () => {
             // redirect the user to verify
             setTimeout(() => {
                 navigate('/verify', {
-                    state: {email: data.email}
+                    state: { email: data.email }
                 })
             }, 2000)
 
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
         } catch (error: any) {
             // console.log("Error", error);
             toast.error(error.data.error)
@@ -69,9 +69,10 @@ export const Register = () => {
 
 
                 <div className="w-full max-w-lg p-8 rounded-xl shadow-lg bg-white">
-                    <h1 className="text-3xl font-bold mb-6 text-center">Account Registration</h1>
-                    <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
+                    <h1 className="text-3xl font-bold mb-6 text-center" data-test="todo-registration-header">Account Registration</h1>
+                    <form onSubmit={handleSubmit(onSubmit)} className="space-y-4" data-test="signup-form">
                         <input
+                            data-test="signup-firstname"
                             type="text"
                             {...register("first_name")}
                             placeholder="First Name"
@@ -83,6 +84,7 @@ export const Register = () => {
                             )
                         }
                         <input
+                            data-test="signup-lastname"
                             type="text"
                             {...register("last_name")}
                             placeholder="Last Name"
@@ -95,6 +97,7 @@ export const Register = () => {
                             )
                         }
                         <input
+                            data-test="signup-email"
                             type="email"
                             {...register("email")}
                             placeholder="Email"
@@ -107,6 +110,7 @@ export const Register = () => {
                             )
                         }
                         <input
+                            data-test="signup-phone"
                             type="text"
                             {...register("phone_number")}
                             placeholder="Phone Number"
@@ -119,6 +123,7 @@ export const Register = () => {
                             )
                         }
                         <input
+                            data-test="signup-password"
                             type="password"
                             {...register("password")}
                             placeholder="Password"
@@ -131,6 +136,7 @@ export const Register = () => {
                         }
 
                         <input
+                            data-test="signup-confirmpassword"
                             type="password"
                             {...register('confirmPassword')}
                             placeholder="Confirm Password"
@@ -141,7 +147,7 @@ export const Register = () => {
                             <span className=" text-red-700 text-sm">{errors.confirmPassword.message}</span>
                         )}
 
-                        <button type="submit" className="btn btn-primary w-full mt-4" disabled={isLoading}>
+                        <button data-test="signup-submitbtn" type="submit" className="btn btn-primary w-full mt-4" disabled={isLoading}>
                             {
                                 isLoading ? (
                                     <>

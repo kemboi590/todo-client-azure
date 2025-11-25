@@ -64,9 +64,10 @@ export const Login = () => {
 
             <div className="flex justify-center items-center min-h-screen bg-base-200 ">
                 <div className="w-full max-w-lg p-8 rounded-xl shadow-lg bg-white">
-                    <h1 className="text-3xl font-bold mb-6 text-center">Login</h1>
-                    <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
+                    <h1 className="text-3xl font-bold mb-6 text-center" data-test="todo-login-header">Login</h1>
+                    <form onSubmit={handleSubmit(onSubmit)} className="space-y-4" data-test="login-form">
                         <input
+                            data-test="login-email-input"
                             type="email"
                             {...register("email")}
                             placeholder="Email"
@@ -78,6 +79,7 @@ export const Login = () => {
                         )}
 
                         <input
+                            data-test="login-password-input"
                             type="password"
                             {...register("password")}
                             placeholder="Password"
@@ -91,7 +93,7 @@ export const Login = () => {
 
                         {/* <button type="submit" className="btn btn-primary w-full mt-4">Login</button> */}
 
-                        <button type="submit" className="btn btn-primary w-full mt-4" disabled={isLoading}>
+                        <button data-test="login-submit-button" type="submit" className="btn btn-primary w-full mt-4" disabled={isLoading}  >
                             {
                                 isLoading ? (
                                     <>

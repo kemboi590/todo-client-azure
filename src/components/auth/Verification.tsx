@@ -5,6 +5,7 @@ import * as yup from 'yup'; //validator
 import { usersAPI } from "../../features/auth/usersAPI";
 import { toast } from "sonner";
 import { useLocation } from "react-router";
+import { useNavigate } from "react-router"
 
 
 type VerifyInputs = {
@@ -19,6 +20,7 @@ const schema = yup.object({
 
 
 export const Verification = () => {
+    const navigate = useNavigate()
     const [verifyUser, { isLoading }] = usersAPI.useVerifyUserMutation()
     const location = useLocation()
 
@@ -40,6 +42,11 @@ export const Verification = () => {
             const response = await verifyUser(data).unwrap()
             console.log("Response", response);
             toast.success(response.message)
+
+            // redirect the user to verify
+            setTimeout(() => {
+                navigate('/login')
+            }, 2000)
             // eslint-disable-next-line @typescript-eslint/no-explicit-any
         } catch (error: any) {
             console.log("Error", error);
