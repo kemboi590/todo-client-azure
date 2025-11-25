@@ -26,5 +26,5 @@ jobs:
         uses: cypress-io/github-action@v6
         with:
           build: pnpm run build
-          start: pnpm start
+          start: pnpm preview
           browser: chrome
