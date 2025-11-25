@@ -3,22 +3,24 @@ name: Cypress Regression Tests
 on: push
 
 jobs:
-  cypress-run:
+  cypress-run: # Runs on GitHub’s Ubuntu 24.04 runner.
     runs-on: ubuntu-24.04
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v4 # Pulls your code.
       
+        #Installs pnpm v10.
       - name: Setup pnpm
         uses: pnpm/action-setup@v4
         with:
-          version: 9
+          version: 10
       
+          #Installs Node 22.15.0
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: '22.15.0'
-          cache: 'pnpm'
+          cache: 'pnpm' #Enables pnpm caching for faster future runs, so it does not redownload
       
       # Install npm dependencies, cache them correctly
       # and run all Cypress tests
